@@ -1,5 +1,3 @@
-package behavorial;
-
 interface SortStrategy
 {
    void sort(String[] array);

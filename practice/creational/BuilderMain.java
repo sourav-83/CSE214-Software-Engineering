@@ -1,5 +1,3 @@
-package structural;
-
 class Computer
 {
     private String CPU;

@@ -1,5 +1,3 @@
-package structural;
-
 interface Car{
     void Assemble();
 }

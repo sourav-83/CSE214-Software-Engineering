@@ -1,5 +1,3 @@
-package structural;
-
 public class Singleton {
     private static Singleton Obj;
 

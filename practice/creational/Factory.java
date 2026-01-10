@@ -1,5 +1,3 @@
-package structural;
-
 abstract class Vehicle
 {
     public abstract void Display();

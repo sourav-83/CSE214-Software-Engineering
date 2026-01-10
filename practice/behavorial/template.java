@@ -1,5 +1,3 @@
-package behavorial;
-
 abstract class BevarageMaker
 {
     public final void MakeBevarage()
