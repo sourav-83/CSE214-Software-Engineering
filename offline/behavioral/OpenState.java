@@ -10,7 +10,6 @@ class OpenState implements CourseState {
             if (course.getEnrolledCount() + 1 >= course.getCapacity()) {
                 course.status = CourseStatus.FULL;
                 course.setState(new FullState());
-                System.out.println(course.getCode() + " will be FULL after this enrollment.");
             }
             return true;
         } else {
@@ -55,7 +54,7 @@ class OpenState implements CourseState {
         // Adjust status based on capacity
         if (course.getEnrolledCount() < course.getCapacity()) {
             // Stay OPEN
-            System.out.println(course.getCode() + " remains OPEN (capacity allows enrollment).");
+            System.out.println(course.getCode() + " status changed to OPEN (capacity allows enrollment).");
         } else if (course.getEnrolledCount() >= course.getCapacity()) {
             course.status = CourseStatus.FULL;
             course.setState(new FullState());

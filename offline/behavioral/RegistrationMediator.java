@@ -28,7 +28,12 @@ public class RegistrationMediator extends Mediator {
         if (success) {
             course.addToEnrolled(student);
             student.addEnrolledCourse(course);
-            System.out.println(student.name + " successfully enrolled in " + course.code);
+            System.out.println("Enrolled: " + student.name + " in " + course.code);
+            CourseStatus status = course.status;
+            if (status == CourseStatus.FULL)
+            {
+                System.out.println(course.getCode() + " is now FULL.");
+            }
         }
         
         return success;
@@ -64,7 +69,7 @@ public class RegistrationMediator extends Mediator {
         if (success) {
             course.addToWaitlistInternal(student);
             student.addWaitlistCourse(course);
-            System.out.println(student.name + " added to waitlist for " + course.code);
+            System.out.println("Waitlisted: " + student.name + " for " + course.code);
         }
         
         return success;
@@ -92,7 +97,7 @@ public class RegistrationMediator extends Mediator {
             
             if (wasEnrolled) {
                 course.removeFromEnrolled(student);
-                System.out.println(student.name + " dropped from " + course.code);
+                System.out.println("Dropped from enrolled: " + student.name + " from " + course.code);
                 
 
                 if (course.status == CourseStatus.OPEN || course.status == CourseStatus.FULL) {
@@ -100,7 +105,7 @@ public class RegistrationMediator extends Mediator {
                 }
             } else {
                 course.removeFromWaitlist(student);
-                System.out.println(student.name + " removed from waitlist for " + course.code);
+                System.out.println("Removed from waitlist: " + student.name + " for " + course.code);
             }
         }
         
@@ -115,9 +120,8 @@ public class RegistrationMediator extends Mediator {
             Student promoted = course.pollFromWaitlist();
             if (promoted != null) {
                 course.addToEnrolled(promoted);
-                // promoted.removeCourse(course); 
                 promoted.addEnrolledCourse(course); 
-                System.out.println("  Promoted from waitlist: " + promoted.name + " for " + course.code);
+                System.out.println("Promoted from waitlist: " + promoted.name + " into " + course.code);
             }
         }
     }
